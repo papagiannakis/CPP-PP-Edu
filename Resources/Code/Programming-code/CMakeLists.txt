@@ -60,9 +60,4 @@ add_subdirectory(Chapter26)
 
 add_subdirectory(Chapter27)
 
-
-add_subdirectory(Chapter-GUI-assignment/Project)
-
-add_subdirectory(Chapter_GUI_assignment_2023/Project)
-
 add_subdirectory(_helloWorld_ray_tracing)

@@ -1,3 +1,0 @@
-/Users/papagian/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/assignments/2023/Assingment1/build/CMakeFiles/Assignment1-2023.exe.dir
-/Users/papagian/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/assignments/2023/Assingment1/build/CMakeFiles/edit_cache.dir
-/Users/papagian/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/assignments/2023/Assingment1/build/CMakeFiles/rebuild_cache.dir
