@@ -4,5 +4,5 @@
 
 #### 2012-today, University of Crete & ICS-FORTH 
 
-### cs150 Course Description
-Please check the course syllabus: [CPP-PP.ipynb](./CPP-PP-Edu.ipynb) for more details. 
+#### HY150 Course Materials
+Please check the course syllabus: [CPP-PP-Edu.ipynb](./CPP-PP-Edu.ipynb) for more details. 
