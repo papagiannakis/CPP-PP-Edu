@@ -1,0 +1,4 @@
+/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/HelloWorld.exe.dir
+/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/HelloWorld2.exe.dir
+/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/edit_cache.dir
+/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/rebuild_cache.dir

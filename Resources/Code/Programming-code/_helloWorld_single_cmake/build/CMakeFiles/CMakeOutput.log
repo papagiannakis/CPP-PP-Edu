@@ -1,0 +1,290 @@
+The system is: Darwin - 22.3.0 - arm64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Users/papagian/opt/anaconda3/envs/Elements38/bin/clang 
+Build flags: -ftree-vectorize;-fPIC;-fPIE;-fstack-protector-strong;-O2;-pipe;-isystem;/Users/papagian/opt/anaconda3/envs/Elements38/include
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/3.25.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++ 
+Build flags: -ftree-vectorize;-fPIC;-fPIE;-fstack-protector-strong;-O2;-pipe;-stdlib=libc++;-fvisibility-inlines-hidden;-fmessage-length=0;-isystem;/Users/papagian/opt/anaconda3/envs/Elements38/include
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/3.25.2/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-Zc1VEE
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b6de6/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_b6de6.dir/build.make CMakeFiles/cmTC_b6de6.dir/build
+Building C object CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o
+/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang   -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl,-v -MD -MT CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCCompilerABI.c
+clang version 14.0.6
+Target: arm64-apple-darwin22.3.0
+Thread model: posix
+InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin
+clang-14: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ (in-process)
+ "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang-14" -cc1 -triple arm64-apple-macosx13.0.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=2 -target-sdk-version=13.1 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sha2 -target-feature +aes -target-abi darwinpcs -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=lldb -target-linker-version 530 -v "-fcoverage-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-Zc1VEE" -resource-dir /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6 -dependency-file CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -sys-header-deps -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -O2 "-fdebug-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-Zc1VEE" -ferror-limit 19 -stack-protector 2 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fmax-type-align=16 -vectorize-loops -vectorize-slp -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCCompilerABI.c
+clang -cc1 version 14.0.6 based upon LLVM 14.0.6 default target arm64-apple-darwin22.3.0
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /Users/papagian/opt/anaconda3/envs/Elements38/include
+ /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+Linking C executable cmTC_b6de6
+/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6de6.dir/link.txt --verbose=1
+/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/papagian/opt/anaconda3/envs/Elements38/lib -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -v -Wl,-v CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -o cmTC_b6de6 
+clang version 14.0.6
+Target: arm64-apple-darwin22.3.0
+Thread model: posix
+InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin
+ "/usr/bin/ld" -demangle -lto_library /Users/papagian/opt/anaconda3/envs/Elements38/lib/libLTO.14.dylib -dynamic -arch arm64 -platform_version macos 13.0.0 13.1 -pie -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o cmTC_b6de6 -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -search_paths_first -headerpad_max_install_names -pie -headerpad_max_install_names -dead_strip_dylibs -rpath /Users/papagian/opt/anaconda3/envs/Elements38/lib -v CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -lSystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-820.1
+BUILD 20:07:05 Nov  7 2022
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Users/papagian/opt/anaconda3/envs/Elements38/lib
+	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
+Framework search paths:
+	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/Users/papagian/opt/anaconda3/envs/Elements38/include]
+    add: [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include]
+    add: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+  end of search list found
+  collapse include dir [/Users/papagian/opt/anaconda3/envs/Elements38/include] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/include]
+  collapse include dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include]
+  collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+  implicit include dirs: [/Users/papagian/opt/anaconda3/envs/Elements38/include;/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-Zc1VEE]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_b6de6/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_b6de6.dir/build.make CMakeFiles/cmTC_b6de6.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang   -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl -v -MD -MT CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang version 14.0.6]
+  ignore line: [Target: arm64-apple-darwin22.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin]
+  ignore line: [clang-14: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang-14" -cc1 -triple arm64-apple-macosx13.0.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=2 -target-sdk-version=13.1 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sha2 -target-feature +aes -target-abi darwinpcs -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=lldb -target-linker-version 530 -v "-fcoverage-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-Zc1VEE" -resource-dir /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6 -dependency-file CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -sys-header-deps -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -O2 "-fdebug-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-Zc1VEE" -ferror-limit 19 -stack-protector 2 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fmax-type-align=16 -vectorize-loops -vectorize-slp -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 14.0.6 based upon LLVM 14.0.6 default target arm64-apple-darwin22.3.0]
+  ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /Users/papagian/opt/anaconda3/envs/Elements38/include]
+  ignore line: [ /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include]
+  ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+  ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_b6de6]
+  ignore line: [/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6de6.dir/link.txt --verbose=1]
+  ignore line: [/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names -Wl -pie -Wl -headerpad_max_install_names -Wl -dead_strip_dylibs -Wl -rpath /Users/papagian/opt/anaconda3/envs/Elements38/lib -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -v -Wl -v CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -o cmTC_b6de6 ]
+  ignore line: [clang version 14.0.6]
+  ignore line: [Target: arm64-apple-darwin22.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin]
+  link line: [ "/usr/bin/ld" -demangle -lto_library /Users/papagian/opt/anaconda3/envs/Elements38/lib/libLTO.14.dylib -dynamic -arch arm64 -platform_version macos 13.0.0 13.1 -pie -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o cmTC_b6de6 -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -search_paths_first -headerpad_max_install_names -pie -headerpad_max_install_names -dead_strip_dylibs -rpath /Users/papagian/opt/anaconda3/envs/Elements38/lib -v CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o -lSystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Users/papagian/opt/anaconda3/envs/Elements38/lib/libLTO.14.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [arm64] ==> ignore
+    arg [-platform_version] ==> ignore
+    arg [macos] ==> ignore
+    arg [13.0.0] ==> ignore
+    arg [13.1] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_b6de6] ==> ignore
+    arg [-L/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib]
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-dead_strip_dylibs] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_b6de6.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a] ==> lib [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Users/papagian/opt/anaconda3/envs/Elements38/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+  Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/lib]
+  collapse library dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/lib]
+  collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+  collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+  implicit libs: []
+  implicit objs: []
+  implicit dirs: [/Users/papagian/opt/anaconda3/envs/Elements38/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+  implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-muZjmf
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e3baf/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_e3baf.dir/build.make CMakeFiles/cmTC_e3baf.dir/build
+Building CXX object CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o
+/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++   -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl,-v -MD -MT CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+clang version 14.0.6
+Target: arm64-apple-darwin22.3.0
+Thread model: posix
+InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin
+clang-14: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ (in-process)
+ "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang-14" -cc1 -triple arm64-apple-macosx13.0.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=2 -target-sdk-version=13.1 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sha2 -target-feature +aes -target-abi darwinpcs -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=lldb -target-linker-version 530 -v "-fcoverage-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-muZjmf" -resource-dir /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6 -dependency-file CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -stdlib=libc++ -internal-isystem /Users/papagian/opt/anaconda3/envs/Elements38/bin/../include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -O2 -fdeprecated-macro "-fdebug-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-muZjmf" -ferror-limit 19 -fvisibility-inlines-hidden -stack-protector 2 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -fmax-type-align=16 -vectorize-loops -vectorize-slp -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 14.0.6 based upon LLVM 14.0.6 default target arm64-apple-darwin22.3.0
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /Users/papagian/opt/anaconda3/envs/Elements38/include
+ /Users/papagian/opt/anaconda3/envs/Elements38/bin/../include/c++/v1
+ /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+Linking CXX executable cmTC_e3baf
+/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3baf.dir/link.txt --verbose=1
+/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++ -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -Wl,-pie -Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,/Users/papagian/opt/anaconda3/envs/Elements38/lib -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -v -Wl,-v CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_e3baf 
+clang version 14.0.6
+Target: arm64-apple-darwin22.3.0
+Thread model: posix
+InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin
+ "/usr/bin/ld" -demangle -lto_library /Users/papagian/opt/anaconda3/envs/Elements38/lib/libLTO.14.dylib -dynamic -arch arm64 -platform_version macos 13.0.0 13.1 -pie -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o cmTC_e3baf -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -search_paths_first -headerpad_max_install_names -pie -headerpad_max_install_names -dead_strip_dylibs -rpath /Users/papagian/opt/anaconda3/envs/Elements38/lib -v CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-820.1
+BUILD 20:07:05 Nov  7 2022
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Users/papagian/opt/anaconda3/envs/Elements38/lib
+	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
+Framework search paths:
+	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/Users/papagian/opt/anaconda3/envs/Elements38/include]
+    add: [/Users/papagian/opt/anaconda3/envs/Elements38/bin/../include/c++/v1]
+    add: [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include]
+    add: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+  end of search list found
+  collapse include dir [/Users/papagian/opt/anaconda3/envs/Elements38/include] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/include]
+  collapse include dir [/Users/papagian/opt/anaconda3/envs/Elements38/bin/../include/c++/v1] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/include/c++/v1]
+  collapse include dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include]
+  collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+  implicit include dirs: [/Users/papagian/opt/anaconda3/envs/Elements38/include;/Users/papagian/opt/anaconda3/envs/Elements38/include/c++/v1;/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-muZjmf]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_e3baf/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_e3baf.dir/build.make CMakeFiles/cmTC_e3baf.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++   -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk   -v -Wl -v -MD -MT CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang version 14.0.6]
+  ignore line: [Target: arm64-apple-darwin22.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin]
+  ignore line: [clang-14: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang-14" -cc1 -triple arm64-apple-macosx13.0.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=2 -target-sdk-version=13.1 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sha2 -target-feature +aes -target-abi darwinpcs -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=lldb -target-linker-version 530 -v "-fcoverage-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-muZjmf" -resource-dir /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6 -dependency-file CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -stdlib=libc++ -internal-isystem /Users/papagian/opt/anaconda3/envs/Elements38/bin/../include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -O2 -fdeprecated-macro "-fdebug-compilation-dir=/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build/CMakeFiles/CMakeScratch/TryCompile-muZjmf" -ferror-limit 19 -fvisibility-inlines-hidden -stack-protector 2 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -fmax-type-align=16 -vectorize-loops -vectorize-slp -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/Cellar/cmake/3.25.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 14.0.6 based upon LLVM 14.0.6 default target arm64-apple-darwin22.3.0]
+  ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /Users/papagian/opt/anaconda3/envs/Elements38/include]
+  ignore line: [ /Users/papagian/opt/anaconda3/envs/Elements38/bin/../include/c++/v1]
+  ignore line: [ /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include]
+  ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include]
+  ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
+  ignore line: [End of search list.]
+  ignore line: [Linking CXX executable cmTC_e3baf]
+  ignore line: [/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3baf.dir/link.txt --verbose=1]
+  ignore line: [/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++ -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names -Wl -pie -Wl -headerpad_max_install_names -Wl -dead_strip_dylibs -Wl -rpath /Users/papagian/opt/anaconda3/envs/Elements38/lib -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -v -Wl -v CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_e3baf ]
+  ignore line: [clang version 14.0.6]
+  ignore line: [Target: arm64-apple-darwin22.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Users/papagian/opt/anaconda3/envs/Elements38/bin]
+  link line: [ "/usr/bin/ld" -demangle -lto_library /Users/papagian/opt/anaconda3/envs/Elements38/lib/libLTO.14.dylib -dynamic -arch arm64 -platform_version macos 13.0.0 13.1 -pie -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o cmTC_e3baf -L/Users/papagian/opt/anaconda3/envs/Elements38/lib -search_paths_first -headerpad_max_install_names -pie -headerpad_max_install_names -dead_strip_dylibs -rpath /Users/papagian/opt/anaconda3/envs/Elements38/lib -v CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Users/papagian/opt/anaconda3/envs/Elements38/lib/libLTO.14.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [arm64] ==> ignore
+    arg [-platform_version] ==> ignore
+    arg [macos] ==> ignore
+    arg [13.0.0] ==> ignore
+    arg [13.1] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_e3baf] ==> ignore
+    arg [-L/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib]
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-dead_strip_dylibs] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_e3baf.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lSystem] ==> lib [System]
+    arg [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a] ==> lib [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Users/papagian/opt/anaconda3/envs/Elements38/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+  Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/lib]
+  collapse library dir [/Users/papagian/opt/anaconda3/envs/Elements38/lib] ==> [/Users/papagian/opt/anaconda3/envs/Elements38/lib]
+  collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+  collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+  implicit libs: [c++]
+  implicit objs: []
+  implicit dirs: [/Users/papagian/opt/anaconda3/envs/Elements38/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib]
+  implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks]
+
+

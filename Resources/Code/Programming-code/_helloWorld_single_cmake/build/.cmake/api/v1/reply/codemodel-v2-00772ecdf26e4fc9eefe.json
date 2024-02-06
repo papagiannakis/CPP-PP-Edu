@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1.4"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "helloWorld_single",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "HelloWorld.exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HelloWorld.exe-Debug-223eea5f4947252522c8.json",
+					"name" : "HelloWorld.exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "HelloWorld2.exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HelloWorld2.exe-Debug-6350a4b74f162906d250.json",
+					"name" : "HelloWorld2.exe",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build",
+		"source" : "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "Enumerations.H": "cpp"
+    },
+    "cmake.preferredGenerators": [
+    Unix Makefiles
+    ]
+}

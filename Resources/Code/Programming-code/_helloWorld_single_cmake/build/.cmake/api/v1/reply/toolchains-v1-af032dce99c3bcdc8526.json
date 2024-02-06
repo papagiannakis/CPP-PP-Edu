@@ -1,0 +1,90 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/Users/papagian/opt/anaconda3/envs/Elements38/include",
+						"/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+					],
+					"linkDirectories" : 
+					[
+						"/Users/papagian/opt/anaconda3/envs/Elements38/lib",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+					],
+					"linkFrameworkDirectories" : 
+					[
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+					],
+					"linkLibraries" : []
+				},
+				"path" : "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang",
+				"version" : "14.0.6"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/Users/papagian/opt/anaconda3/envs/Elements38/include",
+						"/Users/papagian/opt/anaconda3/envs/Elements38/include/c++/v1",
+						"/Users/papagian/opt/anaconda3/envs/Elements38/lib/clang/14.0.6/include",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+					],
+					"linkDirectories" : 
+					[
+						"/Users/papagian/opt/anaconda3/envs/Elements38/lib",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+					],
+					"linkFrameworkDirectories" : 
+					[
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+					],
+					"linkLibraries" : 
+					[
+						"c++"
+					]
+				},
+				"path" : "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++",
+				"version" : "14.0.6"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP",
+				"ixx",
+				"cppm"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

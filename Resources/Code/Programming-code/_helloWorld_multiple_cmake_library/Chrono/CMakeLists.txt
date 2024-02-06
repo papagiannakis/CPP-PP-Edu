@@ -1,0 +1,1 @@
+add_library(ChronoLib STATIC Chrono.h Chrono.cpp)

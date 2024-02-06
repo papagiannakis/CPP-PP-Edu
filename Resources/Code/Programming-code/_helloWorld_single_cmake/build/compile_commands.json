@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build",
+  "command": "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++   -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -std=gnu++17 -o CMakeFiles/HelloWorld.exe.dir/HelloWorld.cpp.o -c \"/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/HelloWorld.cpp\"",
+  "file": "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/HelloWorld.cpp"
+},
+{
+  "directory": "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/build",
+  "command": "/Users/papagian/opt/anaconda3/envs/Elements38/bin/clang++   -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -fmessage-length=0 -isystem /Users/papagian/opt/anaconda3/envs/Elements38/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -std=gnu++17 -o CMakeFiles/HelloWorld2.exe.dir/HelloWorld2.cpp.o -c \"/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/HelloWorld2.cpp\"",
+  "file": "/Volumes/Code HD/GPcode/Courseware/HY150/_Stroustrup/src/Programming-code/_helloWorld_single_cmake/HelloWorld2.cpp"
+}
+]
