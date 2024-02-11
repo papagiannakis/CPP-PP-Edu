@@ -7,6 +7,10 @@
 #include <iostream>
 #include <limits>
 
+#ifdef linux
+#include <climits>
+#endif
+
 using namespace std;
 
 //------------------------------------------------------------------------------
