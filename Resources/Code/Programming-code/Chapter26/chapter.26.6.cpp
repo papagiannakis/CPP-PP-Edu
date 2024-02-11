@@ -6,6 +6,10 @@
 
 #include <vector>
 
+#ifdef linux
+#include <cstring>
+#endif
+
 using namespace std;
 
 //------------------------------------------------------------------------------

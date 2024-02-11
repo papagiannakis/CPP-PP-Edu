@@ -12,6 +12,10 @@
 #include <vector>
 #include <string>
 
+#ifdef linux
+#include <cstring>
+#endif
+
 using namespace std;
 
 //------------------------------------------------------------------------------
