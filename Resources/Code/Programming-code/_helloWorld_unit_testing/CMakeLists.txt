@@ -1,5 +1,5 @@
-project(helloWorld_unit_testing)
 cmake_minimum_required(VERSION 3.1.4)
+project(helloWorld_unit_testing)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

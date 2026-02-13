@@ -1,6 +1,6 @@
-project(chapter20)
+cmake_minimum_required(VERSION 3.10)
 
-cmake_minimum_required(VERSION 3.1.4)
+project(chapter20)
 
 add_executable(chapter.20.1.1 chapter.20.1.1.cpp)
 add_executable(chapter.20.7.1 chapter.20.7.1.cpp)

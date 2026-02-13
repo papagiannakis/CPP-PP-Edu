@@ -1,6 +1,6 @@
-project(chapter16)
+cmake_minimum_required(VERSION 3.10)
 
-cmake_minimum_required(VERSION 3.1.4)
+project(chapter16)
 
 #add_dependencies()
 add_executable(chapter.16.5 chapter.16.5.cpp)

@@ -9,7 +9,7 @@
 # @date 2024
 #---------------------------------------------------------------------------------------------------
 
-cmake_minimum_required (VERSION 3.1.4...3.27.0)
+cmake_minimum_required (VERSION 3.10...3.27.0)
 
 project(helloWorld_ray_tracing)
 

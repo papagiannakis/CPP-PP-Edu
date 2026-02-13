@@ -1,6 +1,6 @@
-project(GUI)
-
 cmake_minimum_required(VERSION 3.1.5)
+
+project(GUI)
 
 set(HEADER_FILES Graph.h GUI.h Point.h Simple_window.h Window.h std_lib_facilities.h)
 set(SOURCE_FILES Graph.cpp GUI.cpp Simple_window.cpp Window.cpp)

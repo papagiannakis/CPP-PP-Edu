@@ -1,6 +1,6 @@
-project(chapter12)
-
 cmake_minimum_required(VERSION 3.1.4)
+
+project(chapter12)
 
 #add_dependencies()
 add_executable(chapter.12.3 chapter.12.3.cpp)

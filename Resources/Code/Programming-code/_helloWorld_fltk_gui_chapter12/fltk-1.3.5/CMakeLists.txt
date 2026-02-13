@@ -21,8 +21,8 @@
 # Remove when CMake >= 2.8.4 is required
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
-project(FLTK)
 cmake_minimum_required(VERSION 2.6.3)
+project(FLTK)
 
 #######################################################################
 # define some functions and macros

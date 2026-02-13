@@ -21,8 +21,8 @@
 # Remove when CMake >= 2.8.4 is required
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 
+cmake_minimum_required(VERSION 3.10)
 project(FLTK)
-cmake_minimum_required(VERSION 2.6.3)
 
 #######################################################################
 # define some functions and macros
@@ -67,9 +67,9 @@ configure_file(
 #######################################################################
 # build examples - these have to be built after fluid is built/imported
 #######################################################################
-if(OPTION_BUILD_EXAMPLES)
+if(OPTION_BUILD_EXAMPLES AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/test/CMakeLists.txt")
    add_subdirectory(test)
-endif(OPTION_BUILD_EXAMPLES)
+endif()
 
 #######################################################################
 # installation

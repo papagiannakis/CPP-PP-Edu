@@ -57,10 +57,10 @@ FUNCTION main
 
     PRINT "P3", image_width, image_height, "255"
 
-    FOR j FROM 0 TO image_height
-        FOR i FROM 0 TO image_width
-            SET r TO i / (image_width - 1)
-            SET g TO j / (image_height - 1)
+    FOR i FROM 0 TO image_height
+        FOR j FROM 0 TO image_width
+            SET r TO j / (image_width - 1)
+            SET g TO i / (image_height - 1)
             SET b TO 0
 
             SET ir TO CONVERT TO INTEGER(255.999 * r)
