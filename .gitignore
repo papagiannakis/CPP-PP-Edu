@@ -31,3 +31,20 @@
 *.out
 *.app
 .vscode/settings.json
+
+# Build artifacts
+build/
+.cache/
+Resources/Code/Programming-code/build/
+Resources/Code/Programming-code/.vscode/
+
+# CMake (in-source build artifacts)
+/CMakeCache.txt
+/CMakeFiles/
+/cmake_install.cmake
+/compile_commands.json
+/CTestTestfile.cmake
+/Makefile
+/install_manifest.txt
+/Testing/
+/CMakeUserPresets.json
