@@ -16,8 +16,6 @@ class Bad_area { };    // a type specifically for reporting errors from area()
 // throw a Bad_area exception in case of a bad argument
 int area(int length, int width)
 {
-    int errnum = 7;
-    //if (length<=0 || width <=0) throw Bad_area();
     if (length<=0 || width <=0) throw Bad_area();
     return length*width;
 }

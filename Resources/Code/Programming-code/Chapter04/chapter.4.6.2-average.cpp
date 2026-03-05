@@ -18,7 +18,7 @@ int main()
 
     // compute mean temperature:
     double sum = 0;
-    for (int i = 0; i< temps.size(); ++i) sum += temps[i];
+    for (double t : temps) sum += t;  // range-based for loop avoids signed/unsigned mismatch
     cout << "Average temperature: " << sum/temps.size() << endl;
 
     // compute median temperature:
