@@ -21,7 +21,8 @@
 8. [CMake Tutorial](#cmake-tutorial)
 9. [How to Build Everything](#how-to-build-everything)
 10. [How to Create Your Own Project](#how-to-create-your-own-project)
-11. [Resources](#resources)
+11. [VS Code Setup and AI Copilots](#vs-code-setup-and-ai-copilots)
+12. [Resources](#resources)
 
 ---
 
@@ -662,6 +663,195 @@ int main() {
     cout << "Hello!" << endl;
 }
 ```
+
+---
+
+## VS Code Setup and AI Copilots
+
+### Required extensions
+
+Install these from the VS Code Extensions panel (`Ctrl+Shift+X`):
+
+| Extension | ID | Purpose |
+|-----------|-----|---------|
+| **C/C++** | `ms-vscode.cpptools` | IntelliSense, syntax highlighting, debugging |
+| **CMake Tools** | `ms-vscode.cmake-tools` | Configure/build/run CMake projects from the IDE |
+| **CMake** | `twxs.cmake` | Syntax highlighting for `CMakeLists.txt` files |
+| **clangd** *(optional)* | `llvm-vs-code-extensions.vscode-clangd` | Faster, more accurate IntelliSense (alternative to cpptools) |
+
+### Opening the project
+
+Always open the **source root** — not a chapter subfolder — so CMake Tools can find the top-level `CMakeLists.txt`:
+
+```
+File → Open Folder → Resources/Code/Programming-code/
+```
+
+VS Code will detect `CMakeLists.txt` and prompt:
+> *"Would you like to configure this project?"* → click **Yes**
+
+### Configuring and building with CMake Tools
+
+The project's `.vscode/settings.json` already sets the preferred generator:
+```json
+"cmake.preferredGenerators": ["Unix Makefiles"]
+```
+
+**Status bar controls** (bottom of VS Code window):
+
+| Button | What it does |
+|--------|-------------|
+| `⚙ No Kit Selected` | Click to choose your compiler (GCC or Clang) |
+| `▶ Build` | Runs `cmake --build` for the whole project |
+| `▷ [target]` | Click to pick which executable to run |
+| `🐛` | Launch the selected target under the debugger |
+
+**Step by step:**
+
+1. Click **⚙ No Kit Selected** in the status bar → choose e.g. `GCC 12.x` or `Clang 14.x`
+2. CMake Tools automatically runs `cmake -S . -B build/` in the background
+3. Press **F7** (or click **▶ Build**) to compile everything
+4. Click **▷ [target name]** → select the executable you want → press **▶** to run it
+5. Press **F5** to run the selected target inside the debugger
+
+### Building and debugging a single file (quick mode)
+
+The existing `.vscode/tasks.json` and `.vscode/launch.json` let you build and debug the **currently open file** directly with clang++, without going through CMake:
+
+- **Build active file:** `Ctrl+Shift+B` → runs `clang++ -g <current file> -o <output>`
+- **Debug active file:** `F5` → compiles with clang++ then launches lldb
+
+> This quick mode is useful for single-file experiments. For multi-file projects always use CMake Tools.
+
+### IntelliSense and `std_lib_facilities.h`
+
+If you see red squiggles under `#include "std_lib_facilities.h"`, add the chapter folder to IntelliSense's include path. Create or edit `.vscode/c_cpp_properties.json`:
+
+```json
+{
+  "configurations": [{
+    "name": "Linux",
+    "includePath": [
+      "${workspaceFolder}/**"
+    ],
+    "compilerPath": "/usr/bin/clang++",
+    "cppStandard": "c++17",
+    "intelliSenseMode": "linux-clang-x64"
+  }],
+  "version": 4
+}
+```
+
+The `"${workspaceFolder}/**"` glob makes every `std_lib_facilities.h` in any subfolder visible.
+
+---
+
+### AI Copilots for C++ (free options)
+
+Three free setups work well with this project. All integrate into VS Code.
+
+---
+
+#### Option 1 — GitHub Copilot (free tier)
+
+GitHub Copilot's **free plan** gives 2 000 code completions and 50 chat messages per month at no cost.
+
+**Setup:**
+1. Go to [github.com/features/copilot](https://github.com/features/copilot) → sign in → select the **Free** plan
+2. In VS Code install: `GitHub.copilot` + `GitHub.copilot-chat`
+3. Sign in with your GitHub account when prompted
+
+**How to use with this project:**
+- Start typing any C++ expression — Copilot suggests completions inline; press `Tab` to accept
+- Open the **Chat panel** (`Ctrl+Alt+I`) and ask things like:
+  - *"Explain what this Shape class does"*
+  - *"Write a CMakeLists.txt that links against bookgui and fltk"*
+  - *"What does `attach(Shape&)` do in the Window class?"*
+
+---
+
+#### Option 2 — Claude via Continue (free API tier)
+
+[Continue](https://www.continue.dev) is an open-source AI assistant extension that connects to multiple AI providers, including Claude.
+
+**Setup:**
+1. Install the extension: `Continue.continue`
+2. Get a free Anthropic API key at [console.anthropic.com](https://console.anthropic.com) (free tier included)
+3. Open Continue settings (`~/.continue/config.json`) and add:
+
+```json
+{
+  "models": [{
+    "title": "Claude",
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-5",
+    "apiKey": "YOUR_API_KEY_HERE"
+  }]
+}
+```
+
+4. Reload VS Code
+
+**How to use:**
+- Highlight any code → right-click → **Ask Continue** to explain or refactor it
+- Open the Continue panel (`Ctrl+Shift+L`) and ask questions about the codebase
+- Type `@file Chapter12/chapter.12.3.cpp` in the chat to give Claude direct context from a file
+
+---
+
+#### Option 3 — Ollama (fully local, completely free)
+
+[Ollama](https://ollama.com) runs open-source LLMs on your own machine. No API key, no internet needed after the initial model download. Works through Continue.
+
+**Setup:**
+1. Install Ollama from [ollama.com](https://ollama.com/download)
+2. Pull a code-capable model (choose based on your RAM):
+
+```bash
+ollama pull codellama        # 4 GB — best for C++ code completion
+ollama pull qwen2.5-coder    # 4 GB — strong at CMake and C++
+ollama pull llama3.2         # 2 GB — general assistant, lower RAM
+```
+
+3. Ollama starts a local server automatically at `http://localhost:11434`
+4. Install **Continue** (`Continue.continue`) and add to `~/.continue/config.json`:
+
+```json
+{
+  "models": [{
+    "title": "CodeLlama (local)",
+    "provider": "ollama",
+    "model": "codellama"
+  }]
+}
+```
+
+**How to use:**
+- Same as Continue with Claude above — all inference runs locally
+- Useful when working offline (e.g. in a lab without internet)
+- `codellama` and `qwen2.5-coder` both understand C++17, CMakeLists.txt syntax, and FLTK-style code
+
+**Recommended model by task:**
+
+| Task | Recommended model |
+|------|------------------|
+| C++ syntax completion | `codellama` or `qwen2.5-coder` |
+| Explaining code / asking questions | `llama3.2` or `qwen2.5-coder` |
+| Writing CMakeLists.txt | `qwen2.5-coder` |
+| Low RAM machine (< 8 GB) | `llama3.2` (2 GB) |
+
+---
+
+### Comparison of the three options
+
+| | GitHub Copilot | Claude (Continue) | Ollama (local) |
+|-|---------------|-------------------|----------------|
+| Cost | Free (limited) / $10/mo unlimited | Free tier + pay-per-token | Completely free |
+| Internet required | Yes | Yes | After first download: No |
+| Code completion | Inline, very fast | Via Continue panel | Via Continue panel |
+| Chat | Yes (Copilot Chat) | Yes (Continue) | Yes (Continue) |
+| Privacy | Code sent to GitHub | Code sent to Anthropic | Stays on your machine |
+| C++ quality | Excellent | Excellent | Good (codellama/qwen) |
 
 ---
 
