@@ -16,10 +16,12 @@
 3. [Visual Hierarchy](#visual-hierarchy)
 4. [Chapter Guide](#chapter-guide)
 5. [Example Projects](#example-projects)
-6. [CMake Tutorial](#cmake-tutorial)
-7. [How to Build Everything](#how-to-build-everything)
-8. [How to Create Your Own Project](#how-to-create-your-own-project)
-9. [Resources](#resources)
+6. [Graphics and GUI with FLTK](#graphics-and-gui-with-fltk)
+7. [Ray Tracing Project](#ray-tracing-project)
+8. [CMake Tutorial](#cmake-tutorial)
+9. [How to Build Everything](#how-to-build-everything)
+10. [How to Create Your Own Project](#how-to-create-your-own-project)
+11. [Resources](#resources)
 
 ---
 
@@ -197,16 +199,264 @@ _helloWorld_multiple_cmake_library/
 ```
 
 ### `_helloWorld_fltk_gui_chapter12/` — First GUI window
-Opens a graphical window using FLTK. Requires the `fltk-1.3.5` library to build first.
+A fully self-contained project that opens a graphical window. Everything needed is bundled inside (FLTK + bookgui + a Chapter12 example). See the dedicated [Graphics and GUI with FLTK](#graphics-and-gui-with-fltk) section for full build instructions and dependency explanation.
+```
+_helloWorld_fltk_gui_chapter12/
+├── CMakeLists.txt        ← top-level: chains fltk → GUI → Chapter12
+├── fltk-1.3.5/           ← FLTK library (full source, embedded)
+├── GUI/                  ← bookgui static library (Window, Graph, Shape, …)
+└── Chapter12/
+    ├── CMakeLists.txt
+    └── chapter.12.3.cpp  ← draws a polygon + text in a window
+```
 
 ### `_helloWorld_ray_tracing/` — Ray tracing renderer
-Implements Peter Shirley's *Ray Tracing in One Weekend* in C++. Each `src/InOneWeekend/` subfolder adds more features. Output images are in `Resources/Images/`.
+Implements Peter Shirley's *Ray Tracing in One Weekend* in C++. No external dependencies — output is a PPM image written to stdout. See the dedicated [Ray Tracing Project](#ray-tracing-project) section for full build and run instructions.
+```
+_helloWorld_ray_tracing/
+├── CMakeLists.txt                 ← 14 executables (one per book chapter)
+└── src/InOneWeekend/
+    ├── Chapter2.2/  rt1-chapter2.2.cpp   ← PPM color gradient (start here)
+    ├── Chapter2.3/  rt1-chapter2.3.cpp
+    ├── Chapter3.1/  vec3.h color.h …     ← vectors and color math
+    ├── Chapter4.2/  ray.h …              ← ray-sphere intersection
+    ├── Chapter5.2/ … Chapter9.5/         ← materials, anti-aliasing, cameras
+    └── _data/                            ← shared data
+```
 
 ### `_helloWorld_unit_testing/` — Unit tests with Google Test
 Shows how to write and run automated tests. Requires cloning Google Test first:
 ```bash
 cd Resources/Code/Programming-code/_helloWorld_unit_testing/
 git clone https://github.com/google/googletest.git
+```
+
+---
+
+## Graphics and GUI with FLTK
+
+Chapters 12–16 display graphics in a desktop window. This requires three layers of software that must be built in order:
+
+```
+Your program (Chapter12/chapter.12.3.cpp)
+        │  #include "Simple_window.h"
+        │  #include "Graph.h"
+        ▼
+   bookgui  (static library built from GUI/)
+   Window, Simple_window, Shape, Graph, Color, Line, Circle, Text, Image, …
+        │  wraps FLTK types: Fl_Window, Fl_Widget, fl_color, …
+        ▼
+   FLTK 1.3.5  (static libraries: fltk, fltk_images)
+   Cross-platform GUI toolkit (X11 on Linux, Cocoa on macOS, Win32 on Windows)
+        │
+        ▼
+   OS windowing system (X11/OpenGL on Linux, Cocoa on macOS)
+```
+
+### What each layer provides
+
+| Layer | Location | What it is |
+|-------|----------|------------|
+| **FLTK 1.3.5** | `fltk-1.3.5/` | Cross-platform C++ GUI toolkit. Provides windows, widgets, event loops, and image loading. Licensed under LGPL. |
+| **bookgui** | `GUI/` | Stroustrup's thin wrapper over FLTK. Provides beginner-friendly classes: `Window`, `Simple_window`, `Shape`, `Line`, `Rectangle`, `Circle`, `Text`, `Image`, `Function`, `Axis`, `Button`, `In_box`, `Out_box`. |
+| **Your program** | `Chapter12/` | Includes `Simple_window.h` and `Graph.h` from bookgui, links against bookgui + fltk + fltk_images. |
+
+### Key header files in `GUI/`
+
+| Header | Classes / types inside |
+|--------|----------------------|
+| `Point.h` | `Point(x, y)` — 2D integer coordinate |
+| `Graph.h` | `Shape`, `Line`, `Rectangle`, `Circle`, `Ellipse`, `Polygon`, `Text`, `Image`, `Function`, `Axis`, `Color`, `Line_style`, `Font` |
+| `Window.h` | `Window` — inherits `Fl_Window`; `attach(Shape&)`, `detach()` |
+| `Simple_window.h` | `Simple_window` — window with a "Next" button for stepping through examples |
+| `GUI.h` | `Widget`, `Button`, `In_box`, `Out_box`, `Menu` — interactive controls |
+
+### Platform prerequisites
+
+Install the required OS libraries **before** trying to build:
+
+**Ubuntu / Debian:**
+```bash
+sudo apt update
+sudo apt install build-essential cmake libx11-dev libxext-dev libxft-dev \
+     libxinerama-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libjpeg-dev zlib1g-dev
+```
+
+**Fedora / RHEL:**
+```bash
+sudo dnf install gcc-c++ cmake libX11-devel libXext-devel libXft-devel \
+     libXinerama-devel mesa-libGL-devel mesa-libGLU-devel libpng-devel libjpeg-devel zlib-devel
+```
+
+**macOS (Homebrew):**
+```bash
+# Xcode command-line tools first:
+xcode-select --install
+# CMake:
+brew install cmake
+# No extra X11 libraries needed — FLTK uses Cocoa on macOS automatically.
+```
+
+**Windows (MinGW / MSYS2):**
+```bash
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake
+# No extra libraries needed — FLTK uses Win32 API automatically.
+```
+
+### Option A — Build the self-contained starter project (recommended for newcomers)
+
+`_helloWorld_fltk_gui_chapter12/` bundles everything. One CMake command builds FLTK, then bookgui, then the Chapter12 example.
+
+```bash
+cd Resources/Code/Programming-code/_helloWorld_fltk_gui_chapter12
+
+# Configure (this will take a minute — it configures FLTK too)
+cmake -S . -B build
+
+# Build all three layers
+cmake --build build
+
+# Run the example (a window opens showing a polygon and text)
+./build/Chapter12/chapter.12.3        # Linux/macOS
+build\Chapter12\chapter.12.3.exe      # Windows
+```
+
+What you should see: a window titled "My window" containing a red polygon and a "Hello, graphical world!" text label.
+
+### Option B — Build Chapter12 as part of the full project
+
+The root `Programming-code/CMakeLists.txt` already includes everything. Building it all:
+
+```bash
+cd Resources/Code/Programming-code
+
+cmake -S . -B build
+cmake --build build
+
+# Run a Chapter12 example
+./build/Chapter12/chapter12.12.3.exe
+```
+
+### Chapter 12 source files overview
+
+| File | What it demonstrates |
+|------|---------------------|
+| `chapter.12.3.cpp` | First window: polygon + text label |
+| `chapter.12.7.1.cpp` | Basic shapes: lines, rectangles |
+| `chapter.12.7.2.cpp` | Colors and line styles |
+| `chapter.12.7.3.cpp` | Circles and ellipses |
+| `chapter.12.7.4.cpp` | Polylines and closed shapes |
+| `chapter.12.7.5.cpp` | Text rendering and fonts |
+| `chapter.12.7.6.cpp` | Displaying images (JPEG/GIF) |
+| `chapter.12.7.7.cpp` | Function plotting |
+| `chapter.12.7.8.cpp`–`.11` | Axes, marks, interactive widgets |
+
+### Troubleshooting FLTK build issues
+
+| Error | Likely cause | Fix |
+|-------|-------------|-----|
+| `X11/Xlib.h: No such file` | Missing X11 dev headers | Run the apt/dnf install command above |
+| `GL/gl.h: No such file` | Missing OpenGL headers | `sudo apt install libgl1-mesa-dev` |
+| `cannot find -lXinerama` | Missing Xinerama library | `sudo apt install libxinerama-dev` |
+| `dyld: Library not loaded: libfltk` | macOS dynamic lib not found | Use the static build (default in CMake config) |
+| Window doesn't appear on Linux | No display (e.g. SSH without X forwarding) | Either use `ssh -X`, or run on a machine with a monitor |
+
+---
+
+## Ray Tracing Project
+
+The `_helloWorld_ray_tracing/` project implements *Ray Tracing in One Weekend* by Peter Shirley (free online at [raytracing.github.io](https://raytracing.github.io)). It requires **no external libraries** — just a C++11 compiler.
+
+### How it works
+
+Each executable renders a scene and writes a PPM image to **stdout**. PPM is a plain-text image format that any image viewer can open. You redirect the output to a `.ppm` file, then view it.
+
+```
+./chapter9.5.exe  >  output.ppm
+         │                │
+   renders scene     image file you can open
+   to stdout         in any viewer
+```
+
+### Progressive chapter structure
+
+Each chapter in the book adds one new concept. The code grows chapter by chapter:
+
+| Executable | Source file | What it renders |
+|-----------|------------|-----------------|
+| `chapter2.2.exe` | `Chapter2.2/rt1-chapter2.2.cpp` | RGB gradient — tests your PPM pipeline |
+| `chapter2.3.exe` | `Chapter2.3/` | Improved gradient |
+| `chapter3.1.exe` | `Chapter3.1/` | Introduces `vec3` and `color` types |
+| `chapter4.2.exe` | `Chapter4.2/` | First ray-sphere intersection (red sphere) |
+| `chapter5.2.exe` | `Chapter5.2/` | Surface normals (coloured by normal direction) |
+| `chapter6.2.exe` | `Chapter6.2/` | Ground plane + multiple objects |
+| `chapter6.8.exe` | `Chapter6.8/` | Hittable list, intervals |
+| `chapter7.exe` | `Chapter7/` | Anti-aliasing (multiple rays per pixel) |
+| `chapter8.exe` | `Chapter8/` | Diffuse (matte) material |
+| `chapter9.1.exe`–`9.5.exe` | `Chapter9.x/` | Metal materials, reflection, fuzzy reflections |
+
+### Build and run
+
+```bash
+cd Resources/Code/Programming-code/_helloWorld_ray_tracing
+
+# Configure (no dependencies to find — instant)
+cmake -S . -B build
+
+# Build all 14 executables
+cmake --build build
+
+# Render the simplest scene (colour gradient)
+./build/chapter2.2.exe > gradient.ppm
+
+# Render the final scene (metal spheres, anti-aliasing)
+./build/chapter9.5.exe > final_scene.ppm
+```
+
+### Viewing the output images
+
+PPM is supported by many viewers. Choose one:
+
+**Linux:**
+```bash
+eog final_scene.ppm          # GNOME image viewer
+display final_scene.ppm      # ImageMagick
+feh final_scene.ppm          # lightweight viewer
+```
+
+**macOS:**
+```bash
+open final_scene.ppm         # Preview opens PPM natively
+```
+
+**Windows:**
+```powershell
+# IrfanView, GIMP, or convert to PNG with ImageMagick:
+magick final_scene.ppm final_scene.png
+```
+
+**Any platform — convert to PNG:**
+```bash
+# Requires ImageMagick (sudo apt install imagemagick)
+convert final_scene.ppm final_scene.png
+```
+
+Pre-rendered output images for each chapter are in `Resources/Images/` for reference.
+
+### Understanding the core types (Chapter 3.1 onwards)
+
+```cpp
+// vec3.h — 3D vector used for positions, directions, and colours
+class vec3 { double e[3]; };
+using point3 = vec3;   // a position in 3D space
+using color  = vec3;   // an RGB colour (0.0–1.0 per channel)
+
+// ray.h — a ray: origin + direction
+class ray {
+    point3 orig;
+    vec3   dir;
+    point3 at(double t) const;  // point along the ray at distance t
+};
 ```
 
 ---
