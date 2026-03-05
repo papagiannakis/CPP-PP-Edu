@@ -175,61 +175,385 @@ Each chapter folder contains:
 
 ## Example Projects
 
-These standalone projects in `_helloWorld_*` folders each demonstrate a complete, buildable pattern.
+These five standalone projects in `_helloWorld_*` folders each demonstrate a complete, buildable C++ pattern. They are ordered from simplest to most complex — work through them in order when starting out.
 
-### `_helloWorld_single_cmake/` — Simplest start
-Two `.cpp` files, one `CMakeLists.txt`. **Start here.**
+| Project | Difficulty | What you build | Key concepts |
+|---------|-----------|----------------|--------------|
+| [`_helloWorld_single_cmake`](#_helloworld_single_cmake--simplest-cmake-project) | ★☆☆☆☆ | Two console programs | Basic C++, CMake basics |
+| [`_helloWorld_multiple_cmake_library`](#_helloworld_multiple_cmake_library--static-library) | ★★☆☆☆ | Console app + static library | Libraries, namespaces, exceptions, operator overloading |
+| [`_helloWorld_unit_testing`](#_helloworld_unit_testing--unit-tests-with-google-test) | ★★☆☆☆ | Test suite + app | Exception handling, Google Test, TDD |
+| [`_helloWorld_fltk_gui_chapter12`](#_helloworld_fltk_gui_chapter12--gui-window-with-fltk) | ★★★☆☆ | Graphical window with shapes | OOP, inheritance, GUI, multi-module CMake |
+| [`_helloWorld_ray_tracing`](#_helloworld_ray_tracing--ray-tracing-renderer) | ★★★★☆ | 3D rendered image (PPM) | Math, header-only design, smart pointers, polymorphism |
+
+---
+
+### `_helloWorld_single_cmake/` — Simplest CMake project
+
+**What it is:** The absolute starting point. Two source files, each producing a standalone console program that prints a greeting. No dependencies, no library, just C++ + CMake.
+
+**What you run:**
+```
+Hello, world and welcome to HY150 !!!
+```
+
+**File layout:**
 ```
 _helloWorld_single_cmake/
-├── CMakeLists.txt
-├── HelloWorld.cpp
-├── HelloWorld2.cpp
-└── std_lib_facilities.h
+├── CMakeLists.txt       ← defines two executables
+├── HelloWorld.cpp       ← prints one line
+├── HelloWorld2.cpp      ← prints two lines
+└── std_lib_facilities.h ← course helper header
 ```
 
-### `_helloWorld_multiple_cmake_library/` — Project with a library
-Shows how to split code into a reusable static library (the `Chrono` library).
+**What this project teaches:**
+
+| Topic | Where |
+|-------|-------|
+| The minimal C++ program (`int main()`, `return 0`) | `HelloWorld.cpp` |
+| Writing to the terminal with `cout` | both `.cpp` files |
+| What `#include` does and how the course header `std_lib_facilities.h` works | both `.cpp` files |
+| What `using namespace std;` means | via `std_lib_facilities.h` |
+| The three required CMake lines (`cmake_minimum_required`, `project`, `add_executable`) | `CMakeLists.txt` |
+| How to set the C++ standard (`CMAKE_CXX_STANDARD 17`) | `CMakeLists.txt` |
+| How to build two separate executables from the same project | `CMakeLists.txt` |
+
+**CMake pattern used:**
+```cmake
+cmake_minimum_required(VERSION 3.1.4)
+project(helloWorld_single)
+set(CMAKE_CXX_STANDARD 17)
+add_executable(HelloWorld.exe HelloWorld.cpp)
+add_executable(HelloWorld2.exe HelloWorld2.cpp)
+```
+This is the smallest valid `CMakeLists.txt`. Every more complex project in the course is just an extension of this pattern.
+
+**Build and run:**
+```bash
+cd Resources/Code/Programming-code/_helloWorld_single_cmake
+cmake -S . -B build && cmake --build build
+./build/HelloWorld.exe
+./build/HelloWorld2.exe
+```
+
+---
+
+### `_helloWorld_multiple_cmake_library/` — Static library
+
+**What it is:** A Date class (from PPP Chapter 9.8) split into a reusable static library. The main program creates dates, compares them, and prints them. This is the first project that shows how real C++ codebases are organized.
+
+**What you run:**
+```
+holiday is: 1978/7/4
+ d2 is: 1821/3/25
+and indeed the two dates are different!
+```
+
+**File layout:**
 ```
 _helloWorld_multiple_cmake_library/
-├── CMakeLists.txt
-├── chapter.9.8.cpp          ← main program
+├── CMakeLists.txt          ← root: coordinates two targets
+├── chapter.9.8.cpp         ← main program (uses the Date class)
+├── std_lib_facilities.h
 └── Chrono/
-    ├── CMakeLists.txt        ← builds ChronoLib static library
-    ├── Chrono.cpp
-    └── Chrono.h
+    ├── CMakeLists.txt       ← builds ChronoLib (STATIC)
+    ├── Chrono.h             ← Date class interface
+    └── Chrono.cpp           ← Date class implementation
 ```
 
-### `_helloWorld_fltk_gui_chapter12/` — First GUI window
-A fully self-contained project that opens a graphical window. Everything needed is bundled inside (FLTK + bookgui + a Chapter12 example). See the dedicated [Graphics and GUI with FLTK](#graphics-and-gui-with-fltk) section for full build instructions and dependency explanation.
+**What this project teaches:**
+
+| Topic | Where |
+|-------|-------|
+| Separating interface (`.h`) from implementation (`.cpp`) | `Chrono/Chrono.h` vs `Chrono.cpp` |
+| Organizing code in a **namespace** (`Chrono::`) | `Chrono.h`, `Chrono.cpp` |
+| Building a **static library** (`add_library(ChronoLib STATIC …)`) | `Chrono/CMakeLists.txt` |
+| Linking a library to an executable (`target_link_libraries`) | root `CMakeLists.txt` |
+| Exposing a library's headers (`target_include_directories`) | root `CMakeLists.txt` |
+| Throwing and catching **custom exceptions** (`Date::Invalid`) | `Chrono.cpp`, `chapter.9.8.cpp` |
+| Using **enums** for semantic values (`Date::Month::jan`) | `Chrono.h` |
+| **Operator overloading** (`==`, `!=`, `<<`, `>>` for a class) | `Chrono.h`, `Chrono.cpp` |
+| **Const-correct** class design (accessor methods marked `const`) | `Chrono.h` |
+| Validating constructor arguments and throwing on bad input | `Chrono.cpp` |
+
+**CMake pattern used:**
+```cmake
+# Root CMakeLists.txt
+add_subdirectory(Chrono)                              # build the library first
+add_executable(${PROJECT_NAME}.exe chapter.9.8.cpp)
+target_include_directories(${PROJECT_NAME}.exe PUBLIC Chrono)
+target_link_libraries(${PROJECT_NAME}.exe ChronoLib)  # link it in
+
+# Chrono/CMakeLists.txt
+add_library(ChronoLib STATIC Chrono.h Chrono.cpp)    # the library itself
 ```
-_helloWorld_fltk_gui_chapter12/
-├── CMakeLists.txt        ← top-level: chains fltk → GUI → Chapter12
-├── fltk-1.3.5/           ← FLTK library (full source, embedded)
-├── GUI/                  ← bookgui static library (Window, Graph, Shape, …)
-└── Chapter12/
-    ├── CMakeLists.txt
-    └── chapter.12.3.cpp  ← draws a polygon + text in a window
+This `add_subdirectory` + `add_library` + `target_link_libraries` trio is the standard CMake pattern for any project with more than one module.
+
+**Build and run:**
+```bash
+cd Resources/Code/Programming-code/_helloWorld_multiple_cmake_library
+cmake -S . -B build && cmake --build build
+./build/Chrono-chapter9.exe
 ```
 
-### `_helloWorld_ray_tracing/` — Ray tracing renderer
-Implements Peter Shirley's *Ray Tracing in One Weekend* in C++. No external dependencies — output is a PPM image written to stdout. See the dedicated [Ray Tracing Project](#ray-tracing-project) section for full build and run instructions.
-```
-_helloWorld_ray_tracing/
-├── CMakeLists.txt                 ← 14 executables (one per book chapter)
-└── src/InOneWeekend/
-    ├── Chapter2.2/  rt1-chapter2.2.cpp   ← PPM color gradient (start here)
-    ├── Chapter2.3/  rt1-chapter2.3.cpp
-    ├── Chapter3.1/  vec3.h color.h …     ← vectors and color math
-    ├── Chapter4.2/  ray.h …              ← ray-sphere intersection
-    ├── Chapter5.2/ … Chapter9.5/         ← materials, anti-aliasing, cameras
-    └── _data/                            ← shared data
-```
+---
 
 ### `_helloWorld_unit_testing/` — Unit tests with Google Test
-Shows how to write and run automated tests. Requires cloning Google Test first:
+
+**What it is:** A simple `area()` function (PPP Chapter 5.6) that throws an exception on bad input, paired with a Google Test suite that verifies its behaviour automatically. Two executables are built: the app itself and the test runner.
+
+**What you run (test executable):**
+```
+[==========] Running 2 tests from 2 test suites.
+[----------] 1 test from chapter5
+[ RUN      ] chapter5.area
+[       OK ] chapter5.area (0 ms)
+[----------] 1 test from chapter5two
+[ RUN      ] chapter5two.area
+[       OK ] chapter5two.area (0 ms)
+[==========] 2 tests passed.
+```
+
+**File layout:**
+```
+_helloWorld_unit_testing/
+├── CMakeLists.txt       ← builds two executables + links gtest
+├── chapter5.6.1.h       ← area() function + Bad_area exception class
+├── chapter.5.6.1.cpp    ← app that deliberately triggers the exception
+├── mytests.cpp          ← Google Test suite
+├── std_lib_facilities.h
+└── googletest/          ← Google Test source (clone this once, see below)
+```
+
+**First-time setup** (clone Google Test into the folder):
 ```bash
 cd Resources/Code/Programming-code/_helloWorld_unit_testing/
 git clone https://github.com/google/googletest.git
+```
+
+**What this project teaches:**
+
+| Topic | Where |
+|-------|-------|
+| Defining a **custom exception class** (`class Bad_area {}`) | `chapter5.6.1.h` |
+| Throwing exceptions when preconditions fail (`throw Bad_area()`) | `chapter5.6.1.h` |
+| The `try { } catch (Bad_area) { }` pattern | `chapter.5.6.1.cpp` |
+| Catching multiple exception types (`catch (exception& e)`, `catch (...)`) | `chapter.5.6.1.cpp` |
+| Writing a **Google Test** test case (`TEST(suite, name) { … }`) | `mytests.cpp` |
+| Using `GTEST_ASSERT_EQ` to check return values | `mytests.cpp` |
+| Running all tests with `RUN_ALL_TESTS()` | `mytests.cpp` |
+| Adding an external library as a **CMake subdirectory** | `CMakeLists.txt` |
+| Linking against `gtest` with `target_link_libraries` | `CMakeLists.txt` |
+| Building two executables (app + tests) from one project | `CMakeLists.txt` |
+
+**Key code — the test file:**
+```cpp
+#include <gtest/gtest.h>
+#include "chapter5.6.1.h"
+
+TEST(chapter5, area) {
+    GTEST_ASSERT_EQ(area(5, 5), 25);    // 5×5 must equal 25
+}
+TEST(chapter5two, area) {
+    GTEST_ASSERT_EQ(area(10, 20), 200); // 10×20 must equal 200
+}
+
+int main(int argc, char* argv[]) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+```
+
+**CMake pattern used:**
+```cmake
+add_subdirectory(googletest)            # builds gtest from source
+include_directories(googletest/include)
+
+add_executable(mytests.exe mytests.cpp)
+target_link_libraries(mytests.exe PRIVATE gtest)  # attach gtest to test runner
+
+add_executable(helloWorld_unit_testing.exe chapter.5.6.1.cpp)  # app, no gtest
+```
+
+**Build and run:**
+```bash
+cd Resources/Code/Programming-code/_helloWorld_unit_testing
+cmake -S . -B build && cmake --build build
+./build/mytests.exe                          # run the tests
+./build/helloWorld_unit_testing.exe          # run the app (will catch Bad_area)
+```
+
+---
+
+### `_helloWorld_fltk_gui_chapter12/` — GUI window with FLTK
+
+**What it is:** A graphical desktop window (from PPP Chapter 12) showing a red polygon and a "Hello World" text label. Everything needed — FLTK 1.3.5, the course `bookgui` library, and the Chapter12 program — is bundled inside and built together. This is the entry point to all GUI chapters (12–16).
+
+**What you see:** A 600×400 window titled "Canvas" with a red polygon shape and "Hello World......!" displayed in Times Bold.
+
+**File layout:**
+```
+_helloWorld_fltk_gui_chapter12/
+├── CMakeLists.txt              ← top-level: chains fltk → GUI → Chapter12
+├── fltk-1.3.5/                 ← FLTK toolkit source (embedded, ~3 000 files)
+├── GUI/                        ← bookgui static library
+│   ├── CMakeLists.txt          ← builds libookgui
+│   ├── Point.h                 ← Point(x, y) type
+│   ├── Graph.h / Graph.cpp     ← Shape, Line, Circle, Polygon, Text, Color …
+│   ├── Window.h / Window.cpp   ← Window class (wraps Fl_Window)
+│   ├── Simple_window.h/.cpp    ← adds a "Next" button to Window
+│   └── GUI.h / GUI.cpp         ← Button, In_box, Out_box, Menu widgets
+└── Chapter12/
+    ├── CMakeLists.txt           ← links against bookgui + FLTK
+    └── chapter.12.3.cpp         ← the actual program you run
+```
+
+**Build chain (CMake does this automatically):**
+```
+fltk-1.3.5/  →  GUI/bookgui  →  Chapter12/chapter12.3.exe
+   (FLTK)       (bookgui)         (your program)
+```
+Each layer must be built before the next — this is managed by `add_subdirectory` order in the root `CMakeLists.txt`.
+
+**What this project teaches:**
+
+| Topic | Where |
+|-------|-------|
+| Building a **multi-module CMake project** with ordered subdirectories | root `CMakeLists.txt` |
+| `target_include_directories` and `target_link_directories` for complex paths | `Chapter12/CMakeLists.txt` |
+| Platform-specific linking (Cocoa on macOS, X11 on Linux) | `Chapter12/CMakeLists.txt` |
+| **Namespace** as a module boundary (`Graph_lib::`) | `Graph.h`, `Window.h` |
+| **Inheritance hierarchy**: `Widget` → `Button`, `Shape` → `Line`, `Polygon` | `GUI.h`, `Graph.h` |
+| **Abstract base classes** (`Widget` is pure-virtual; FLTK calls back into it) | `GUI.h` |
+| **Operator overloading** and const-correct accessors on Shape types | `Graph.h` |
+| **FLTK event model**: callbacks, `wait_for_button()`, `Fl::run()` | `Simple_window.h`, `GUI.cpp` |
+| Using `attach(shape)` / `detach()` to add/remove objects from a window | `chapter.12.3.cpp` |
+| **Template container** `Vector_ref<T>` for polymorphic shape lists | `Graph.h` |
+
+**Key program (what you write for Chapter 12):**
+```cpp
+int main() {
+    Point tl(400, 400);
+    Simple_window win(tl, 600, 400, "Canvas");
+
+    Polygon poly;
+    poly.add(Point(300, 200));
+    poly.add(Point(350, 100));
+    poly.add(Point(400, 200));
+    poly.set_color(Color::red);
+
+    Text t(Point(150, 50), "Hello World......!");
+    t.set_font(Graph_lib::Font::times_bold);
+
+    win.attach(poly);
+    win.attach(t);
+    win.wait_for_button();
+}
+```
+
+See the dedicated [Graphics and GUI with FLTK](#graphics-and-gui-with-fltk) section for full build instructions and troubleshooting.
+
+**Build and run:**
+```bash
+cd Resources/Code/Programming-code/_helloWorld_fltk_gui_chapter12
+cmake -S . -B build && cmake --build build
+./build/Chapter12/chapter12.3.exe
+```
+
+---
+
+### `_helloWorld_ray_tracing/` — Ray tracing renderer
+
+**What it is:** A from-scratch 3D renderer based on Peter Shirley's *Ray Tracing in One Weekend* (free online). No external libraries needed — the program writes a PPM image to stdout. Fourteen executables, one per book chapter, each adding a new feature to the renderer.
+
+**What you produce:** A `.ppm` image file you can view in any image viewer.
+
+**File layout:**
+```
+_helloWorld_ray_tracing/
+├── CMakeLists.txt               ← 14 add_executable targets
+└── src/InOneWeekend/
+    ├── Chapter2.2/  rt1-chapter2.2.cpp        ← first image: RGB gradient
+    ├── Chapter2.3/  rt1-chapter2.3.cpp        ← progress output to stderr
+    ├── Chapter3.1/  vec3.h  color.h  …        ← 3D vector class
+    ├── Chapter4.2/  ray.h   …                 ← Ray class, background colour
+    ├── Chapter5.2/  …                         ← sphere hit detection
+    ├── Chapter6.2/  …                         ← surface normals visualised
+    ├── Chapter6.8/  hittable.h  sphere.h  …   ← abstract hittable objects
+    ├── Chapter7/    camera.h    …             ← camera + viewport
+    ├── Chapter8/    …                         ← anti-aliasing (multi-sample)
+    ├── Chapter9.1–9.5/ …                      ← diffuse materials + Lambertian
+    └── _data/                                 ← shared assets
+```
+
+**Chapter-by-chapter progression:**
+
+| Chapter | New concept introduced | C++ feature used |
+|---------|----------------------|-----------------|
+| 2.2 | Write a PPM image via `cout` | loops, integer casting |
+| 2.3 | Progress feedback to `cerr` | `std::flush`, stderr vs stdout |
+| 3.1 | `vec3` class — 3D vector math | operator overloading, `using` aliases |
+| 4.2 | `ray` class — a point + direction | struct with member functions |
+| 5.2 | Ray-sphere intersection (quadratic formula) | math, free functions |
+| 6.2 | Surface normals as colour | normalisation, conditional |
+| 6.8 | `hittable` base class + `sphere` subclass | **abstract base class**, virtual functions, `override` |
+| 7 | `camera` class encapsulating the viewport | class design, encapsulation |
+| 8 | Anti-aliasing — average N samples per pixel | `<random>`, loops, floating-point average |
+| 9.1–9.5 | Diffuse / Lambertian material, recursive rays | `std::shared_ptr`, recursion, material polymorphism |
+
+**What this project teaches:**
+
+| Topic | Where |
+|-------|-------|
+| **Header-only library design** (all logic in `.h` files, no `.cpp`) | `vec3.h`, `ray.h`, `color.h`, `sphere.h` |
+| **Operator overloading** for a math type (`+`, `-`, `*`, `/`, `[]`, `+=`) | `vec3.h` |
+| **Type aliases** (`using point3 = vec3`, `using color = vec3`) | `vec3.h`, `color.h` |
+| **Abstract base class** with pure-virtual method (`hittable::hit()`) | `hittable.h` |
+| **Inheritance** + `override` (`sphere` implements `hittable`) | `sphere.h` |
+| **`std::shared_ptr`** for polymorphic object ownership | `hittable_list.h`, chapter 9.x |
+| **`const` correctness** throughout (every method that doesn't mutate is `const`) | all headers |
+| **PPM image format** — output ASCII pixel data with `cout` | all chapter `.cpp` files |
+| **Multiple CMake executables** from one project (14 independent targets) | `CMakeLists.txt` |
+| **C++11** standard (`std::shared_ptr`, range-based for, `auto`) | `CMakeLists.txt`, headers |
+
+**Key class — vec3 (3D vector with full operator set):**
+```cpp
+class vec3 {
+  public:
+    double e[3];
+    vec3(double e0, double e1, double e2) : e{e0, e1, e2} {}
+
+    double x() const { return e[0]; }
+    double length() const { return sqrt(e[0]*e[0] + e[1]*e[1] + e[2]*e[2]); }
+
+    vec3& operator+=(const vec3& v) { e[0]+=v.e[0]; e[1]+=v.e[1]; e[2]+=v.e[2]; return *this; }
+    // … also -, *, /, [], -()
+};
+// free functions (dot, cross, unit_vector) defined outside the class
+inline double dot(const vec3& u, const vec3& v) { return u.e[0]*v.e[0] + u.e[1]*v.e[1] + u.e[2]*v.e[2]; }
+```
+
+**Key class — hittable (abstract interface for any object a ray can hit):**
+```cpp
+class hittable {
+  public:
+    virtual ~hittable() = default;
+    virtual bool hit(const ray& r, interval ray_t, hit_record& rec) const = 0;  // pure virtual
+};
+
+class sphere : public hittable {   // concrete implementation
+  public:
+    bool hit(const ray& r, interval ray_t, hit_record& rec) const override { … }
+};
+```
+
+See the dedicated [Ray Tracing Project](#ray-tracing-project) section for build instructions and how to view the output images.
+
+**Build and run:**
+```bash
+cd Resources/Code/Programming-code/_helloWorld_ray_tracing
+cmake -S . -B build && cmake --build build
+./build/chapter2.2.exe > image.ppm    # redirect output to a file
+xdg-open image.ppm                   # open with your system image viewer
 ```
 
 ---
