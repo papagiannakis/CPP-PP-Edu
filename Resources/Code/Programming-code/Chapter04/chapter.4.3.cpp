@@ -24,7 +24,9 @@ int main()
     }
 
     {
-        int perimeter = length+width/2;    // add width*2 to length
+        // WARNING: operator-precedence pitfall — this computes length + (width/2),
+        // NOT (length+width)*2, because * and / bind tighter than +
+        int perimeter = length+width/2;
     }
 }
 
