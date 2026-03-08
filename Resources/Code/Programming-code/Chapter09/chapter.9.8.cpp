@@ -31,6 +31,9 @@ public:
     Month month() const { return m; }
     int   year()  const { return y; }
 
+    // add a method to calculate a leap year:
+    bool leap_year() const;
+
     // modifying operations:
     void add_day(int n);        
     void add_month(int n);
@@ -123,6 +126,12 @@ void Date::add_year(int n)
     y+=n;
 }
 
+bool Date::leap_year() const
+{
+    //calculate if the year is a leap year
+    return leapyear(y);
+}
+
 //------------------------------------------------------------------------------
 
 // helper functions:
@@ -150,11 +159,17 @@ case Date::apr: case Date::jun: case Date::sep: case Date::nov:
 } 
 
 //------------------------------------------------------------------------------
-
+// explain leap year calculation:
+// if a year is not divisible by 4, then it is a common year
+// if a year is divisible by 4 and not divisible by 100, then it is a leap year
+// if a year is divisible by 100 and not divisible by 400, then it is a common year
+// if a year is divisible by 400, then it is a leap year
 bool leapyear(int y)
 {
-    // See exercise ???
-    return false;
+   if (y%4!=0) return false; // must be divisible by 4
+    if (y%100!=0) return true; // if divisible by 4 and not by 100 -> leap year
+    if (y%400!=0) return false; // if divisible by 100 and not by 400 -> not a leap year
+    return true; // if divisible by 400 -> leap year
 }
 
 //------------------------------------------------------------------------------
@@ -241,6 +256,10 @@ try
     Chrono::Date holiday(1978, Chrono::Date::jul, 4); // initialization
     Chrono::Date d2 = Chrono::next_Sunday(holiday);
     Chrono::Day  d  = day_of_week(d2);
+    // Chrono::Date d3(1978, Chrono::Date::jul, 34); 
+    Chrono::Date d3(2024, Chrono::Date::jul, 4); // ok
+   
+    cout<< d3<< " a leap year? "<< d3.leap_year() << endl;
     cout << "holiday is " << holiday << " d2 is " << d2 << endl;
     return holiday != d2;
 }
